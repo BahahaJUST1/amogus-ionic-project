@@ -1,13 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>amogus</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab/amogus"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Amogus</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">amogus</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-button id="modify-amogus" (click)="modif = !modif">
+    <ion-icon name="build-outline"></ion-icon>
+  </ion-button>
+
+  <div *ngIf="!modif">
+    Bob, amogus depuis 12 ans, ancien salarié dans le BTP
+  </div>
+
+  <div *ngIf="modif">
+    Ecrire un nouvel avenir pour cet Amogus :
+  </div>
 </ion-content>
