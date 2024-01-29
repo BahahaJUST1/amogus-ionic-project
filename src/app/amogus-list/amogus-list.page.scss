@@ -1,7 +1,17 @@
 .amogus-box {
-    border: 5px solid #1F1F1F;
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
     margin: 2rem;
+
+    width: 200px;
+    height: 260px;
+
+    border-radius: 10px;  
+}
+
+.amogus-name {
+    text-align: center;
+}
+
+.amogus-img {
+    width: 200px;
+    height: 200px; 
 }

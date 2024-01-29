@@ -8,20 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AmogusPage implements OnInit {
 
   modif: boolean = false;
-  amogus = [
-    {
-      id: 1,
-      name: "Bob",
-      color: "#ff0000",
-      img: "/assets/img/amogus.png"
-    },
-    {
-      id: 2,
-      name: "Enguerrand",
-      color: "#ffff00",
-      img: "/assets/img/amogus.png"
-    }
-  ]
 
   constructor() { }
 
