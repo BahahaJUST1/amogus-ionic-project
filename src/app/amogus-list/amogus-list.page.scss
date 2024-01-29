@@ -1,17 +1,27 @@
-.amogus-box {
-    margin: 2rem;
-
+.amogus-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  
+  .amogus-box {
     width: 200px;
     height: 260px;
-
-    border-radius: 10px;  
-}
-
-.amogus-name {
+    border-radius: 10px;
+    flex: 0 0 calc(33% - 4rem);
+    box-sizing: border-box;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+  }
+  
+  .amogus-name {
     text-align: center;
-}
-
-.amogus-img {
+  }
+  
+  .amogus-img {
     width: 200px;
-    height: 200px; 
-}
+    height: 200px;
+  }
+  
