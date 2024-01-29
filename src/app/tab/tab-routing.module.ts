@@ -23,6 +23,10 @@ const routes: Routes = [
                 loadChildren: () => import('../amogus-list/amogus-list.module').then( m => m.AmogusListPageModule)
             },
             {
+                path: 'add',
+                loadChildren: () => import('../amogus-new/amogus-new.module').then( m => m.AmogusNewPageModule)
+            },
+            {
                 path: 'about',
                 loadChildren: () => import('../about/about.module').then( m => m.AboutPageModule)
             },     
