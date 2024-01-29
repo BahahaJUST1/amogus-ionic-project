@@ -1,0 +1,7 @@
+{
+  "name": "amogus-ionic-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
