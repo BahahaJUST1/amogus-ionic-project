@@ -10,7 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'amogus-list',
+    loadChildren: () => import('./amogus-list/amogus-list.module').then( m => m.AmogusListPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+
 ];
 
 @NgModule({
