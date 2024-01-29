@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
+  },  {
+    path: 'amogus-new',
+    loadChildren: () => import('./amogus-new/amogus-new.module').then( m => m.AmogusNewPageModule)
   }
+
 ];
 
 @NgModule({

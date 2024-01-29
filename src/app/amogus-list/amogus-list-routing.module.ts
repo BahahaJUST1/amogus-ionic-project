@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AmogusListPage
+  },
+  {
+    path: 'amogus',
+    loadChildren: () => import('./amogus/amogus.module').then( m => m.AmogusPageModule)
   }
 ];
 
