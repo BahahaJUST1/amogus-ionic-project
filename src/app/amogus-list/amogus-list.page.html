@@ -9,7 +9,9 @@
     <ion-col *ngFor="let amogus of amogusList">
       <ion-list class="amogus-box" [routerLink]="['/amogus/', amogus.id]">
         <p class="amogus-name">{{ amogus.name }}</p>
-        <ion-img class="amogus-img" src="../../assets/img/blank-mogus.png" style="background-color: {{ amogus.color }};"></ion-img>
+        <ion-img *ngIf="amogus.sex == 'M'" class="amogus-img" src="../../assets/img/blank-mogus-m.png" style="background-color: {{ amogus.color }};"></ion-img>
+        <ion-img *ngIf="amogus.sex == 'F'" class="amogus-img" src="../../assets/img/blank-mogus-f.png" style="background-color: {{ amogus.color }};"></ion-img>
+        <ion-img *ngIf="amogus.sex == 'E'" class="amogus-img" src="../../assets/img/blank-mogus-e.png" style="background-color: {{ amogus.color }};"></ion-img>
       </ion-list>
     </ion-col>
   </div>
