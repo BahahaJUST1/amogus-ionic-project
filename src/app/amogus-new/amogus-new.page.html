@@ -5,9 +5,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">amogus-new</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label>Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="amogus.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Couleur</ion-label>
+    <ion-input type="text" [(ngModel)]="amogus.color"></ion-input>
+  </ion-item>
+
+  <p class="text-center">
+    <ion-button (click)="add()">Créer</ion-button>
+  </p>
 </ion-content>
