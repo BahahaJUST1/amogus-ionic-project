@@ -7,13 +7,41 @@
 <ion-content [fullscreen]="true">
 
   <div id="add-content">
+
+    <ion-list>
+      <ion-radio-group [(ngModel)]="amogus.sex">
+        <ion-row class="radio-row">
+          <ion-col>
+            <ion-item>
+              <ion-label><ion-icon name="male"></ion-icon></ion-label>
+              <ion-radio value="M"></ion-radio>
+            </ion-item>
+          </ion-col>
+    
+          <ion-col>
+            <ion-item>
+              <ion-label><ion-icon name="female"></ion-icon></ion-label>
+              <ion-radio value="F"></ion-radio>
+            </ion-item>
+          </ion-col>
+    
+          <ion-col>
+            <ion-item>
+              <ion-label><ion-icon name="happy-outline"></ion-icon></ion-label>
+              <ion-radio value="E"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-list>
+
     <ion-item>
-      <ion-label>Nom</ion-label>
+      <ion-label>Name</ion-label>
       <ion-input type="text" placeholder="Douglas" [(ngModel)]="amogus.name"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label>Couleur</ion-label>
+      <ion-label>Color</ion-label>
       <ion-input type="text" placeholder="#ff0000" [(ngModel)]="amogus.color"></ion-input>
     </ion-item>
   
