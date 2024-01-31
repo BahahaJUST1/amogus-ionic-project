@@ -1,0 +1,22 @@
+#add-content {
+    width: 75%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    background-color: #32373A;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+#add-content ion-button {
+    display: block;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: -1rem;
+}
+
+ion-input {
+    --placeholder-color: #616161
+}
