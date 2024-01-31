@@ -13,19 +13,23 @@ const routes: Routes = [
                 path: '',
                 redirectTo: "/home",
                 pathMatch: "full"
-            },  
+            },
             {
-                path: "home",
-                loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+                path: 'add',
+                loadChildren: () => import('../amogus-new/amogus-new.module').then( m => m.AmogusNewPageModule)
             },
             {
                 path: 'amogus',
                 loadChildren: () => import('../amogus-list/amogus-list.module').then( m => m.AmogusListPageModule)
             },
             {
-                path: 'add',
-                loadChildren: () => import('../amogus-new/amogus-new.module').then( m => m.AmogusNewPageModule)
+                path: "home",
+                loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
             },
+            {
+                path: 'map',
+                loadChildren: () => import('../map/map.module').then( m => m.MapPageModule)
+            },            
             {
                 path: 'about',
                 loadChildren: () => import('../about/about.module').then( m => m.AboutPageModule)
