@@ -12,6 +12,7 @@ import { Amogus } from 'src/app/models/amogus.model';
 export class AmogusPage implements OnInit {
 
   modif: boolean = false;
+  delete: boolean = false;
   amogus!: Amogus;
 
   constructor(
@@ -29,8 +30,41 @@ export class AmogusPage implements OnInit {
     });
   }
 
+  async setDelete() {
+    if(!this.delete) {
+      const alert = await this.alertCtrl.create({
+        header : 'Do you want to delete this amogus ?',
+        subHeader: 'This action will permanently remove your amogus',
+        buttons : [
+          {
+            text: 'Cancel',
+            role: 'Cancel'
+          }, {
+            text: 'Delete',
+            handler: () => {
+              this.delete = !this.delete
+              this.onDelete(this.amogus.id);
+            }
+          }
+        ]
+      });
+      await alert.present();
+    } else {
+      this.delete = !this.delete;
+    }
+  }
+
   onDelete(id: any) {
     this.Amogus.delete(id);
+    this.presentToastDelete();
     this.router.navigate(['/amogus']);
+  }
+
+  async presentToastDelete() {
+    const toast = this.toastCtrl.create({
+      message: 'Amogus deleted !',
+      duration: 2000
+    });
+    (await toast).present();
   }
 }
