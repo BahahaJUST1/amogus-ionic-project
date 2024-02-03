@@ -1,0 +1,46 @@
+#modify-amogus {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 3rem;
+}
+
+#delete-button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 3rem;
+}
+
+.amogus-img {
+    width: 200px;
+    height: 220px;
+    display: block;
+    margin: auto;
+}
+
+#amogus-infos-container, #amogus-infos-description-container {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#amogus-infos {
+    height: 220px;
+    display: block;
+    margin: auto; 
+    margin-left: 1rem;  
+}
+
+#amogus-sex {
+    margin-top: 3px;
+}
+
+#amogus-infos-description {
+    margin-top: 10px;
+    font-size: 1.25rem;
+}
+
+ion-label {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}

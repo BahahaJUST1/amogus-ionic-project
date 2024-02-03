@@ -8,19 +8,50 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-button id="modify-amogus" (click)="modif = !modif">
     <ion-icon name="build-outline"></ion-icon>
   </ion-button>
 
-  <ion-button (click)="onDelete(amogus.id)">
-    <ion-icon name="trash"></ion-icon>
-  </ion-button>
-
   <div *ngIf="!modif">
-    Bob, amogus depuis 12 ans, ancien salarié dans le BTP
+      <ion-grid *ngIf="amogus">
+        <ion-row id="amogus-infos-container">
+          <ion-col size="50%">
+            <ion-img *ngIf="amogus.sex == 'M'" class="amogus-img" src="../../assets/img/blank-mogus-m.png" style="background-color: {{ amogus.color }};"></ion-img>
+            <ion-img *ngIf="amogus.sex == 'F'" class="amogus-img" src="../../assets/img/blank-mogus-f.png" style="background-color: {{ amogus.color }};"></ion-img>
+            <ion-img *ngIf="amogus.sex == 'E'" class="amogus-img" src="../../assets/img/blank-mogus-e.png" style="background-color: {{ amogus.color }};"></ion-img>
+          </ion-col>
+          <ion-col id="amogus-infos">
+            <ion-row>
+              <ion-label>Sex :</ion-label>
+              <ion-icon id="amogus-sex" *ngIf="amogus.sex == 'M'" name="male"></ion-icon>
+              <ion-icon id="amogus-sex" *ngIf="amogus.sex == 'F'" name="female"></ion-icon>
+              <ion-icon id="amogus-sex" *ngIf="amogus.sex == 'E'" name="happy-outline"></ion-icon>
+            </ion-row>
+            <ion-row>
+              <ion-label>Name : </ion-label>
+              {{ amogus.name }}
+            </ion-row>
+            <ion-row>
+              <ion-label>Color : </ion-label>
+              <span style="color: {{ amogus.color }};">{{ amogus.color }}</span>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-row id="amogus-infos-description-container">
+          <ion-col>
+            <ion-row><ion-label>Description : </ion-label></ion-row>
+            <ion-row id="amogus-infos-description">{{ amogus.description }}</ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
   </div>
 
   <div *ngIf="modif">
     Ecrire un nouvel avenir pour cet Amogus :
+    <ion-button id="delete-button" (click)="onDelete(amogus.id)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
   </div>
 </ion-content>
