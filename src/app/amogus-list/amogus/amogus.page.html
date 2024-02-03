@@ -9,10 +9,6 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-button id="modify-amogus" (click)="modif = !modif">
-    <ion-icon name="build-outline"></ion-icon>
-  </ion-button>
-
   <div *ngIf="!modif">
       <ion-grid *ngIf="amogus">
         <ion-row id="amogus-infos-container">
@@ -36,6 +32,11 @@
               <ion-label>Color : </ion-label>
               <span style="color: {{ amogus.color }};">{{ amogus.color }}</span>
             </ion-row>
+            <ion-row>
+              <ion-button id="modify-amogus" (click)="modif = !modif">
+                <ion-icon name="build"></ion-icon>
+              </ion-button>
+            </ion-row>
           </ion-col>
         </ion-row>
 
@@ -49,9 +50,57 @@
   </div>
 
   <div *ngIf="modif">
-    Ecrire un nouvel avenir pour cet Amogus :
-    <ion-button id="delete-button" (click)="setDelete()">
-      <ion-icon name="trash"></ion-icon>
-    </ion-button>
+    <div id="add-content">
+
+      <ion-list>
+        <ion-radio-group [(ngModel)]="amogus.sex">
+          <ion-row class="radio-row">
+            <ion-col>
+              <ion-item>
+                <ion-label><ion-icon name="male"></ion-icon></ion-label>
+                <ion-radio value="M"></ion-radio>
+              </ion-item>
+            </ion-col>
+      
+            <ion-col>
+              <ion-item>
+                <ion-label><ion-icon name="female"></ion-icon></ion-label>
+                <ion-radio value="F"></ion-radio>
+              </ion-item>
+            </ion-col>
+      
+            <ion-col>
+              <ion-item>
+                <ion-label><ion-icon name="happy-outline"></ion-icon></ion-label>
+                <ion-radio value="E"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </ion-list>
+  
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" placeholder="Douglas" [(ngModel)]="amogus.name"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Color</ion-label>
+        <ion-input type="text" placeholder="#ff0000" [(ngModel)]="amogus.color"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" placeholder="Douglas is a 28yo baker" [(ngModel)]="amogus.description"></ion-input>
+      </ion-item>
+    
+      <p class="text-center">
+        <ion-row id="form-update-buttons">
+          <ion-button (click)="setDelete()"><ion-icon name="build"></ion-icon>Update</ion-button>
+          <span id="form-update-buttons-blank"></span>
+          <ion-button (click)="setDelete()"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+        </ion-row>
+      </p>
+    </div>
   </div>
 </ion-content>
