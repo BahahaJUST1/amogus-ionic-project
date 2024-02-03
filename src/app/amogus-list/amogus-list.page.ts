@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AmogusService } from '../amogus.service';
+import { Amogus } from '../models/amogus.model';
 
 @Component({
   selector: 'app-amogus-list',
@@ -8,30 +9,7 @@ import { AmogusService } from '../amogus.service';
 })
 export class AmogusListPage implements OnInit {
 
-  // amogusList = [
-  //   {
-  //     id: 1,
-  //     name: "Bob",
-  //     color: "#ff0000"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Enguerrand",
-  //     color: "#ffff00"
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Mickael",
-  //     color: "#0000ff"
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Douglas",
-  //     color: "#ffffff"
-  //   }
-  // ]
-
-  amogusList!: any;
+  amogusList!: Array<Amogus>;
 
   constructor(private Amogus: AmogusService) { }
 

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tab/amogus"></ion-back-button>
+      <ion-back-button defaultHref="/amogus"></ion-back-button>
     </ion-buttons>
     <ion-title>Amogus</ion-title>
   </ion-toolbar>
@@ -10,6 +10,10 @@
 <ion-content [fullscreen]="true">
   <ion-button id="modify-amogus" (click)="modif = !modif">
     <ion-icon name="build-outline"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="onDelete(amogus.id)">
+    <ion-icon name="trash"></ion-icon>
   </ion-button>
 
   <div *ngIf="!modif">
