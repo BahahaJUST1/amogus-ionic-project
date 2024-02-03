@@ -67,4 +67,19 @@ export class AmogusPage implements OnInit {
     });
     (await toast).present();
   }
+
+  onModif() {
+    this.Amogus.update(this.amogus).subscribe(() => {
+      this.presentToastUpdate();
+      this.modif = false;
+    });
+  }
+
+  async presentToastUpdate() {
+    const toast = this.toastCtrl.create({
+      message: 'Amogus updated !',
+      duration: 2000
+    });
+    (await toast).present();
+  }
 }

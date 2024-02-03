@@ -42,7 +42,10 @@ export class AmogusService {
   }
 
   update(amogus: Amogus) {
-    
+    return new Observable(obs => {
+      this.amogusRef.doc(amogus.id).update(amogus);
+      obs.next();
+    });
   }
 
   delete(id: any) {
