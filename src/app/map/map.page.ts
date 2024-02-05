@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from "leaflet";
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
     selector: 'app-map',
@@ -13,10 +14,12 @@ export class MapPage implements OnInit {
     lng: number = 2.2508;
     zoom: number = 6;
 
-    constructor() { }
+    constructor() { 
+        this.printCurrentPosition();
+    }
 
     ngOnInit() {
-      this.loadLeafletMap();
+        this.loadLeafletMap();
     }
 
     loadLeafletMap() {
@@ -37,4 +40,10 @@ export class MapPage implements OnInit {
             attribution: '&copy; <a href=”https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(this.leafletMap);
     }
+
+    async printCurrentPosition() {
+        const coordinates = await Geolocation.getCurrentPosition();
+      
+        console.log('Current position:', coordinates);
+    };
 }
