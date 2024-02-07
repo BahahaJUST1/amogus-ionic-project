@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AmogusService } from '../amogus.service';
+import { Amogus } from '../models/amogus.model';
 import * as L from "leaflet";
 import { Geolocation } from '@capacitor/geolocation';
 
@@ -9,12 +11,14 @@ import { Geolocation } from '@capacitor/geolocation';
 })
 export class MapPage implements OnInit {
 
+    amogusList!: Array<Amogus>;
+
     leafletMap: any;
     lat: number = 47.1539;
     lng: number = 2.2508;
     zoom: number = 6;
 
-    constructor() {}
+    constructor(private Amogus: AmogusService) {}
 
     userIcon = new L.Icon({
         iconUrl: '../../assets/img/marker.png',
@@ -23,14 +27,32 @@ export class MapPage implements OnInit {
         popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
     });
 
+    amogusIcon = new L.Icon({
+        iconUrl: '../../assets/img/amogus.png',
+        iconSize: [32, 32], // Taille de l'icône en pixels
+        iconAnchor: [16, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
+        popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
+    });
+
     ngOnInit() {
+
         this.loadLeafletMap();
+        
+        // récupération des amogus
+        this.Amogus.getAll().subscribe((data: any) => {
+            this.amogusList = data;
+
+            // création des marqueurs en conséquence
+            for (let amogus of this.amogusList) {
+                L.marker([amogus.latitude, amogus.longitude], {icon: this.amogusIcon}).addTo(this.leafletMap).bindPopup(amogus.name);
+            }
+        });
 
         let userCoordinates: Promise<number[]> = this.getCurrentPosition();
 
-        userCoordinates.then((coordinates) => {
-          L.marker([coordinates[0], coordinates[1]], {icon: this.userIcon}).addTo(this.leafletMap).bindPopup("You are here !");
-        });
+        // userCoordinates.then((coordinates) => {
+        //     L.marker([coordinates[0], coordinates[1]], {icon: this.userIcon}).addTo(this.leafletMap).bindPopup("You are here !");
+        // });
     }
 
     loadLeafletMap() {

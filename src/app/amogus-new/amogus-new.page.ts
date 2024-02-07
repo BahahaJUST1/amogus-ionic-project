@@ -43,17 +43,19 @@ export class AmogusNewPage implements OnInit {
     });
   }
 
-  add() {
-    // ajout de la position du amogus
-    let userCoordinates: Promise<number[]> = this.getCurrentPosition();
-    userCoordinates.then((coordinates) => {
+  async add() {
+    // Récupération de la position de l'utilisateur
+    try {
+      const coordinates = await this.getCurrentPosition();
       this.amogus.latitude = coordinates[0];
       this.amogus.longitude = coordinates[1];
-    });
-
-    this.Amogus.saveNewAmogus(this.amogus).subscribe(() => {
+  
+      // Enregistrement du nouvel Amogus
+      await this.Amogus.saveNewAmogus(this.amogus).toPromise();
       this.amogus = new Amogus();
       this.presentToast();
-    });
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout d\'un Amogus:', error);
+    }
   }
 }
