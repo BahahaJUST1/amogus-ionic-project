@@ -14,12 +14,23 @@ export class MapPage implements OnInit {
     lng: number = 2.2508;
     zoom: number = 6;
 
-    constructor() { 
-        this.printCurrentPosition();
-    }
+    constructor() {}
+
+    userIcon = new L.Icon({
+        iconUrl: '../../assets/img/marker.png',
+        iconSize: [32, 32], // Taille de l'icône en pixels
+        iconAnchor: [16, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
+        popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
+    });
 
     ngOnInit() {
         this.loadLeafletMap();
+
+        let userCoordinates: Promise<number[]> = this.getCurrentPosition();
+
+        userCoordinates.then((coordinates) => {
+          L.marker([coordinates[0], coordinates[1]], {icon: this.userIcon}).addTo(this.leafletMap).bindPopup("You are here !");
+        });
     }
 
     loadLeafletMap() {
@@ -41,9 +52,10 @@ export class MapPage implements OnInit {
         }).addTo(this.leafletMap);
     }
 
-    async printCurrentPosition() {
+    async getCurrentPosition() {
+
         const coordinates = await Geolocation.getCurrentPosition();
-      
-        console.log('Current position:', coordinates);
-    };
+
+        return [coordinates.coords.latitude, coordinates.coords.longitude];
+    }
 }
