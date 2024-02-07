@@ -33,7 +33,19 @@ export class AmogusNewPage implements OnInit {
 
   async presentToast() {
     const toast = this.toastCtrl.create({
-      message: 'Nouvel Amogus enregistré',
+      message: 'New Amogus created',
+      duration: 2000
+    });
+    (await toast).present().then(() => {
+      setTimeout(() => {
+        this.router.navigate(['/amogus']);
+      }, 2000);
+    });
+  }
+
+  async failPresentToast() {
+    const toast = this.toastCtrl.create({
+      message: 'Error, please activate your localisation',
       duration: 2000
     });
     (await toast).present().then(() => {
@@ -55,7 +67,8 @@ export class AmogusNewPage implements OnInit {
       this.amogus = new Amogus();
       this.presentToast();
     } catch (error) {
-      console.error('Erreur lors de l\'ajout d\'un Amogus:', error);
+      // redirection avec erreur pas de location
+      this.failPresentToast();
     }
   }
 }

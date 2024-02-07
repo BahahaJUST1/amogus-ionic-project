@@ -37,6 +37,16 @@ export class MapPage implements OnInit {
     ngOnInit() {
 
         this.loadLeafletMap();
+
+        // Récupération de la position de l'utilisateur
+        this.getCurrentPosition().then((coordinates: number[]) => {
+            const [lat, lng] = coordinates;
+
+            // Centrer la carte sur la position de l'utilisateur
+            this.leafletMap.setView([lat, lng], 20);
+        });
+
+
         
         // récupération des amogus
         this.Amogus.getAll().subscribe((data: any) => {
@@ -47,12 +57,6 @@ export class MapPage implements OnInit {
                 L.marker([amogus.latitude, amogus.longitude], {icon: this.amogusIcon}).addTo(this.leafletMap).bindPopup(amogus.name);
             }
         });
-
-        let userCoordinates: Promise<number[]> = this.getCurrentPosition();
-
-        // userCoordinates.then((coordinates) => {
-        //     L.marker([coordinates[0], coordinates[1]], {icon: this.userIcon}).addTo(this.leafletMap).bindPopup("You are here !");
-        // });
     }
 
     loadLeafletMap() {
