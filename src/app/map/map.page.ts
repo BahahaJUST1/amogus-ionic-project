@@ -62,7 +62,7 @@ export class MapPage implements OnInit {
                 let amogusBGIcon = L.divIcon({
                     className: "among-us-marker",
                     html: `<span style="${markerHtmlStyles}" />`,
-                    iconSize: [36, 36], // Taille de l'icône en pixels
+                    iconSize: [36, 36], // Taille de l'icône en pixels  
                     iconAnchor: [18, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
                     popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
                 });
