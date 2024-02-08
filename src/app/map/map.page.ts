@@ -53,7 +53,7 @@ export class MapPage implements OnInit {
                     height: 36px;
                     display: block;
                     position: relative;
-                    bottom: 4px;
+                    bottom: 2px;
                     right: 1px;
                     border-radius: 3rem 3rem 0;
                     transform: rotate(45deg);
@@ -72,7 +72,7 @@ export class MapPage implements OnInit {
 
                 // marqueur amogus
                 let amogusIcon = L.icon({
-                    iconUrl: '../../assets/img/blank-leaflet-mogus.png',
+                    iconUrl: `../../assets/img/blank-leaflet-mogus-${amogus.sex}.png`,
                     iconSize: [30, 30], // Taille de l'icône en pixels
                     iconAnchor: [15, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
                     popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
