@@ -27,13 +27,6 @@ export class MapPage implements OnInit {
         popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
     });
 
-    amogusIcon = new L.Icon({
-        iconUrl: '../../assets/img/amogus.png',
-        iconSize: [32, 32], // Taille de l'icône en pixels
-        iconAnchor: [16, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
-        popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
-    });
-
     ngOnInit() {
 
         this.loadLeafletMap();
@@ -52,9 +45,40 @@ export class MapPage implements OnInit {
         this.Amogus.getAll().subscribe((data: any) => {
             this.amogusList = data;
 
-            // création des marqueurs en conséquence
+            // marqueur de fond
             for (let amogus of this.amogusList) {
-                L.marker([amogus.latitude, amogus.longitude], {icon: this.amogusIcon}).addTo(this.leafletMap).bindPopup(amogus.name);
+                let markerHtmlStyles = `
+                    background-color: ${amogus.color};
+                    width: 36px;
+                    height: 36px;
+                    display: block;
+                    position: relative;
+                    bottom: 4px;
+                    right: 1px;
+                    border-radius: 3rem 3rem 0;
+                    transform: rotate(45deg);
+                    border: 1px solid #000000`
+
+                let amogusBGIcon = L.divIcon({
+                    className: "among-us-marker",
+                    html: `<span style="${markerHtmlStyles}" />`,
+                    iconSize: [36, 36], // Taille de l'icône en pixels
+                    iconAnchor: [18, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
+                    popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
+                });
+
+                L.marker([amogus.latitude, amogus.longitude], {icon: amogusBGIcon}).addTo(this.leafletMap).bindPopup(amogus.name);
+
+
+                // marqueur amogus
+                let amogusIcon = L.icon({
+                    iconUrl: '../../assets/img/blank-leaflet-mogus.png',
+                    iconSize: [30, 30], // Taille de l'icône en pixels
+                    iconAnchor: [15, 32], // Point d'ancrage par rapport au coin supérieur gauche de l'icône
+                    popupAnchor: [0, -32] // Point d'ancrage pour la fenêtre contextuelle par rapport au coin inférieur gauche de l'icône
+                });
+
+                L.marker([amogus.latitude, amogus.longitude], {icon: amogusIcon}).addTo(this.leafletMap).bindPopup(amogus.name);
             }
         });
     }
